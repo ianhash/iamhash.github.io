@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-06-03T02:05:01.626Z</updated>
+  <updated>2023-11-17T23:04:50.948Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>useEffect infinite loop with dependencies</title>
+    <link href="http://example.com/posts/f37b0db4.html"/>
+    <id>http://example.com/posts/f37b0db4.html</id>
+    <published>2023-11-17T22:10:47.000Z</published>
+    <updated>2023-11-17T23:04:50.948Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="副作用钩子useeffect"><a class="markdownIt-Anchor" href="#副作用钩子useeffect"></a> 副作用钩子：useEffect</h2><p>当需要每次在 React 组件渲染后执行某些操作时，可以通过这个钩子来注册一个副作用函数<code>effect</code>。默认情况下 React 在第一次页面渲染之后以及后续页面的每次更新后都会执行这个<code>effect</code>。</p><p>另外，副作用函数可以返回一个函数，React 会在卸载组件执行清除操作时候调用这个返回的函数，意味着可以在其中加入一些清理工作。实际上，因为 React 会在每次渲染后都会执行<code>effect</code>，它会在调用一个新的<code>effect</code>之前对前一个<code>effect</code>进行清理，所以如果页面如果发生了渲染，清理也会先执行。</p><p>useEffect 的第二个参数可以传入一个数组指定依赖的数据，当这些数据发生了变化时才执行<code>effect</code>。</p><h2 id="无限更新问题分析以及解决"><a class="markdownIt-Anchor" href="#无限更新问题分析以及解决"></a> 无限更新问题分析以及解决</h2><p>这两天写了点代码测试时发现页面出现了无限循环更新，</p><blockquote><p>Warning: Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn’t have a dependency array, or one of the dependencies changes on every render.</p></blockquote><p>主要代码如下：</p><pre class="highlight"><code class="typescript"><span class="hljs-comment">// 从远程获取数据</span><span class="hljs-keyword">const</span> { data } = <span class="hljs-title function_">useRequest</span>(fetchData);<span class="hljs-comment">// 解析数据中的标签</span><span class="hljs-keyword">const</span> tags = _.<span class="hljs-title function_">uniq</span>(_.<span class="hljs-title function_">concat</span>(...(data?.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">x</span>) =&gt;</span> x.<span class="hljs-property">tags</span>) || [])));<span class="hljs-comment">// 设置过滤器</span><span class="hljs-keyword">const</span> [filters, setFilters] = <span class="hljs-title function_">useState</span>(tags);<span class="hljs-comment">// 这里的本意是在 data 更新时更新过滤器</span><span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {  <span class="hljs-title function_">setFilters</span>(tags);}, [tags]);</code></pre><p>在这段代码中，我总认为数据从远端加载之后，<code>tags</code>没有发生变化，<code>setFilters(tags)</code> 应该只会执行一次。现实情况是，<code>setFilters(tags)</code>执行之后，页面发生了渲染，触发了<code>tags</code>的重新计算，尽管数组内容没有变化但对象发生了变化，React 再次执行<code>setFilters(tags)</code>，然后再渲染再执行……，最终 React 无限的执行<code>setFilters(tags)</code>。</p><p>其实 tags 只是一个衍生的中间量，过滤器本质是要在 data 变化后才更新，因此这段代码只需简单改下就正常了。</p><pre class="highlight"><code class="typescript"><span class="hljs-comment">// 从远程获取数据，在这里 useRequest 只会执行一次远程数据拉取，因此 data 不会发生变化。</span><span class="hljs-keyword">const</span> { data } = <span class="hljs-title function_">useRequest</span>(fetchData);<span class="hljs-comment">// 解析数据中的标签</span><span class="hljs-keyword">const</span> tags = _.<span class="hljs-title function_">uniq</span>(_.<span class="hljs-title function_">concat</span>(...(data?.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">x</span>) =&gt;</span> x.<span class="hljs-property">tags</span>) || [])));<span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {  <span class="hljs-title function_">setFilters</span>(tags);}, [data]); <span class="hljs-comment">// 这里更新依赖改为 data</span></code></pre><h2 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h2><p><a href="https://react.dev/reference/react/useEffect">Reference: useEffect</a><br><a href="https://zh-hans.react.dev/reference/react/useEffect">中文 Reference: useEffect</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;副作用钩子useeffect&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#副作用钩子useeffect&quot;&gt;&lt;/a&gt; 副作用钩子：useEffect&lt;/h2&gt;
+&lt;p&gt;当需要每次在 React 组件渲染后执行某些操作时，可以通过这个钩子来</summary>
+      
+    
+    
+    
+    <category term="程序" scheme="http://example.com/categories/%E7%A8%8B%E5%BA%8F/"/>
+    
+    
+    <category term="react" scheme="http://example.com/tags/react/"/>
+    
+    <category term="typescript" scheme="http://example.com/tags/typescript/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>

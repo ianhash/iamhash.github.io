@@ -1,2 +1,6 @@
+http://example.com/posts/f37b0db4.html
 http://example.com/posts/4a17b156.html
 http://example.com/
+http://example.com/tags/react/
+http://example.com/tags/typescript/
+http://example.com/categories/%E7%A8%8B%E5%BA%8F/
