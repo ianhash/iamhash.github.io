@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>get started with rust</title>
+      <link href="/posts/8ca469cd.html"/>
+      <url>/posts/8ca469cd.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="安装"><a class="markdownIt-Anchor" href="#安装"></a> 安装</h2><blockquote><p>Rustup 是一个命令行应用，它是 Rust 的工具链管理器，负责安装、更新和管理 Rust 工具链。工具链包括编译器、标准库、文档、工具以及其他与 Rust 开发相关的组件。rustup 提供了一个统一的接口，通过它可以轻松地安装和使用 Rust。此外，rustup 还可以安装和更新其他 Rust 工具，如 cargo、Rust 文档工具等。同时，rustup 也能够在不同版本的 Rust 工具链中进行切换，包括编译器 rustc 和标准库。</p></blockquote><p>在 macos 上安装 rustup 非常简单，执行以下命令在向导指引下就能完成安装，</p><pre class="highlight"><code class="bash">brew install rustup-init</code></pre><p>安装成功后可以执行<code>rustc --version</code> 查看安装好的 rust 版本信息。如：</p><pre class="highlight"><code class="bash">(base) ➜  Codes rustc --versionrustc 1.75.0 (82e1608df 2023-12-21)</code></pre><p>同时，cargo 也安装好了，</p><pre class="highlight"><code class="bash">(base) ➜  Codes cargo --versioncargo 1.75.0 (1d8b05cdd 2023-11-20)</code></pre><blockquote><p>Cargo 是一个官方的构建系统和包管理器。它是 Rust 生态系统中用于构建和运行 Rust 应用程序的标准工具。Cargo 极大地简化了项目的构建过程，提供了依赖项管理，以及一系列方便的工作流程工具，极大提升了开发效率和协作体验。</p></blockquote><h2 id="hello-world"><a class="markdownIt-Anchor" href="#hello-world"></a> Hello World</h2><p>在任意一个目录下，创建 <a href="http://main.rs">main.rs</a> 文件，代码如下：</p><pre class="highlight"><code class="rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() {    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"hello world"</span>)}</code></pre><p>然后执行编译并运行程序，</p><pre class="highlight"><code class="bash">rustc ./main.rs./main</code></pre><h2 id="体验-cargo"><a class="markdownIt-Anchor" href="#体验-cargo"></a> 体验 Cargo</h2><p>我们可以把上一节的程序按照 cargo 项目的标准目录结构进行调整，假设项目路径为<code>${project}</code></p><ol><li>新建<code>${project}/src</code>目录并且把<code>main.rs</code>移动到这个目录</li><li>新建一个<code>${project}/Cargo.toml</code>文件，文件内容如下：</li></ol><pre class="highlight"><code class="toml"><span class="hljs-section">[package]</span><span class="hljs-attr">name</span> = <span class="hljs-string">"hello-world"</span><span class="hljs-attr">version</span> = <span class="hljs-string">"0.1.0"</span><span class="hljs-attr">edition</span> = <span class="hljs-string">"2021"</span><span class="hljs-comment"># See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html</span><span class="hljs-section">[dependencies]</span></code></pre><p>此时在<code>${project}</code>目录下，执行<code>cargo build</code>，cargo 会调用相应的工具进行编译，你将在目录下看到新生成的 target 目录，其中就包含了已经编译好的 hello-world 二进制可执行文件，可以直接执行这个文件：</p><pre class="highlight"><code class="bash">git:(main) ✗ ./target/debug/hello-worldhello world</code></pre><p>另外通过 cargo 也可以执行，如下：</p><pre class="highlight"><code class="bash">git:(main) ✗ cargo run    Finished dev [unoptimized + debuginfo] target(s) <span class="hljs-keyword">in</span> 0.00s     Running `target/debug/hello-world`hello world</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 程序 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> rust </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Go Tips 1</title>
       <link href="/posts/6063fc3b.html"/>
       <url>/posts/6063fc3b.html</url>

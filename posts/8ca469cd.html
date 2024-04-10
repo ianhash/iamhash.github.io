@@ -1,0 +1,88 @@
+<!DOCTYPE html><html class="appearance-auto" lang="en"><head><meta charset="UTF-8"><title>get started with rust</title><meta name="description" content="学习、思考、写作、享受"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.ico"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/common/jquery.fancybox.min.css"><script src="/js/highlight.pack.js"></script><meta name="description" content=" 安装
+
+Rustup 是一个命令行应用，它是 Rust 的工具链管理器，负责安装、更新和管理 Rust 工具链。工具链包括编译器、标准库、文档、工具以及其他与 Rust 开发相关的组件。rustup 提供了一个统一的接口，通过它可以轻松地安装和使用 Rust。此外，rustup 还可以安装和更新其他 Rust 工具，如 cargo、Rust 文档工具等。同时，rustup 也能够在不同版本的 Rust 工具链中进行切换，包括编译器 rustc 和标准库。
+
+在 macos 上安装 rustup 非常简单，执行以下命令在向导指引下就能完成安装，
+brew install rustup-init
+
+安装成功后可以执行rustc --version 查看安装好的 rust 版本信息。如：
+(base) ➜  C.."><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">IanHash's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">get started with rust</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-text"> 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hello-world"><span class="toc-text"> Hello World</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%93%E9%AA%8C-cargo"><span class="toc-text"> 体验 Cargo</span></a></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/rust"><i class="tag post-item-tag">rust</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">get started with rust</h1><time class="has-text-grey" datetime="2024-04-10T01:02:44.000Z">2024-04-10</time><article class="mt-2 post-content"><h2 id="安装"><a class="markdownIt-Anchor" href="#安装"></a> 安装</h2>
+<blockquote>
+<p>Rustup 是一个命令行应用，它是 Rust 的工具链管理器，负责安装、更新和管理 Rust 工具链。工具链包括编译器、标准库、文档、工具以及其他与 Rust 开发相关的组件。rustup 提供了一个统一的接口，通过它可以轻松地安装和使用 Rust。此外，rustup 还可以安装和更新其他 Rust 工具，如 cargo、Rust 文档工具等。同时，rustup 也能够在不同版本的 Rust 工具链中进行切换，包括编译器 rustc 和标准库。</p>
+</blockquote>
+<p>在 macos 上安装 rustup 非常简单，执行以下命令在向导指引下就能完成安装，</p>
+<pre class="highlight"><code class="bash">brew install rustup-init
+</code></pre>
+<p>安装成功后可以执行<code>rustc --version</code> 查看安装好的 rust 版本信息。如：</p>
+<pre class="highlight"><code class="bash">(base) ➜  Codes rustc --version
+rustc 1.75.0 (82e1608df 2023-12-21)
+</code></pre>
+<p>同时，cargo 也安装好了，</p>
+<pre class="highlight"><code class="bash">(base) ➜  Codes cargo --version
+cargo 1.75.0 (1d8b05cdd 2023-11-20)
+</code></pre>
+<blockquote>
+<p>Cargo 是一个官方的构建系统和包管理器。它是 Rust 生态系统中用于构建和运行 Rust 应用程序的标准工具。Cargo 极大地简化了项目的构建过程，提供了依赖项管理，以及一系列方便的工作流程工具，极大提升了开发效率和协作体验。</p>
+</blockquote>
+<h2 id="hello-world"><a class="markdownIt-Anchor" href="#hello-world"></a> Hello World</h2>
+<p>在任意一个目录下，创建 <a target="_blank" rel="noopener external nofollow noreferrer" href="http://main.rs">main.rs</a> 文件，代码如下：</p>
+<pre class="highlight"><code class="rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() {
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"hello world"</span>)
+}
+</code></pre>
+<p>然后执行编译并运行程序，</p>
+<pre class="highlight"><code class="bash">rustc ./main.rs
+./main
+</code></pre>
+<h2 id="体验-cargo"><a class="markdownIt-Anchor" href="#体验-cargo"></a> 体验 Cargo</h2>
+<p>我们可以把上一节的程序按照 cargo 项目的标准目录结构进行调整，假设项目路径为<code>${project}</code></p>
+<ol>
+<li>新建<code>${project}/src</code>目录并且把<code>main.rs</code>移动到这个目录</li>
+<li>新建一个<code>${project}/Cargo.toml</code>文件，文件内容如下：</li>
+</ol>
+<pre class="highlight"><code class="toml"><span class="hljs-section">[package]</span>
+<span class="hljs-attr">name</span> = <span class="hljs-string">"hello-world"</span>
+<span class="hljs-attr">version</span> = <span class="hljs-string">"0.1.0"</span>
+<span class="hljs-attr">edition</span> = <span class="hljs-string">"2021"</span>
+
+<span class="hljs-comment"># See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html</span>
+
+<span class="hljs-section">[dependencies]</span>
+
+</code></pre>
+<p>此时在<code>${project}</code>目录下，执行<code>cargo build</code>，cargo 会调用相应的工具进行编译，你将在目录下看到新生成的 target 目录，其中就包含了已经编译好的 hello-world 二进制可执行文件，可以直接执行这个文件：</p>
+<pre class="highlight"><code class="bash">git:(main) ✗ ./target/debug/hello-world
+hello world
+</code></pre>
+<p>另外通过 cargo 也可以执行，如下：</p>
+<pre class="highlight"><code class="bash">git:(main) ✗ cargo run
+    Finished dev [unoptimized + debuginfo] target(s) <span class="hljs-keyword">in</span> 0.00s
+     Running `target/debug/hello-world`
+hello world
+</code></pre>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><em></em><a class="button is-default" href="/posts/6063fc3b.html" title="Go Tips 1"><span class="has-text-weight-semibold">Next: Go Tips 1</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="ianhash/ianhash.github.io" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><a title="twitter" target="_blank" rel="noopener nofollow" href="//twitter.com//"><i class="iconfont icon-twitter"></i></a><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/ianhash"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> IanHash 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/js-base64/base64.min.js"></script>
+        <script>
+        const hasAttr = (e,a) => a.some(_=> e.attr(_)!==undefined);
+        $('a').each(function() {
+          const $this = $(this);
+          if(hasAttr($this,["data-fancybox","ignore-external-link"])) return;
+          const href = $this.attr('href');
+          if (href && href.match('^((http|https|thunder|qqdl|ed2k|Flashget|qbrowser|ftp|rtsp|mms)://)')) {
+            const strs = href.split('/');
+            if (strs.length >= 3) {
+                const host = strs[2];
+                if (host !== '' || window.location.host) {
+                    $this.attr('href', '/go.html?u='+Base64.encode(href)+'').attr('rel', 'external nofollow noopener noreferrer');
+                    if (true) {
+                        $this.attr('target', '_blank');
+                    }
+                }
+            }
+          }
+        });
+        </script></body></html>
